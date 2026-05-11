@@ -43,8 +43,16 @@ export default function MenuPage() {
         p.description_tr?.toLowerCase().includes(q)
       )
     }
+    // Tümü görünümünde: önce kategori sırası, sonra ürün sırası
+    if (activeCategory === 'all') {
+      const catOrder = Object.fromEntries(categories.map(c => [c.id, c.sort_order]))
+      list = [...list].sort((a, b) => {
+        const catDiff = (catOrder[a.category_id] ?? 99) - (catOrder[b.category_id] ?? 99)
+        return catDiff !== 0 ? catDiff : (a.sort_order ?? 0) - (b.sort_order ?? 0)
+      })
+    }
     return list
-  }, [products, activeCategory, searchQuery])
+  }, [products, activeCategory, searchQuery, categories])
 
   if (loading) {
     return (
