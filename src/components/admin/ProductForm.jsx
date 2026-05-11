@@ -30,7 +30,7 @@ export default function ProductForm({ product, categories, onClose, onSave }) {
       const { data: u } = supabase.storage.from('menu-images').getPublicUrl(data.path)
       set('image_url', u.publicUrl)
     } else {
-      setError('Görsel yüklenemedi. Supabase Storage "menu-images" bucket\'ının public olduğunu kontrol edin.')
+      setError(`Görsel yüklenemedi: ${err?.message || 'Bilinmeyen hata'}. Supabase SQL Editor'da supabase/storage.sql dosyasını çalıştırın.`)
     }
     setUploading(false)
   }
