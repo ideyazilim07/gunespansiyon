@@ -11,12 +11,14 @@ export default function ProductCard({ product }) {
       {/* Görsel — üstte tam genişlik */}
       <div className="relative w-full h-52">
         {product.image_url ? (
-          <img
-            src={product.image_url}
-            alt={name}
-            className="w-full h-full object-cover object-center"
-            loading="lazy"
-          />
+          <div className="w-full h-full bg-stone-100 flex items-center justify-center">
+            <img
+              src={product.image_url}
+              alt={name}
+              className="w-full h-full object-contain object-center"
+              loading="lazy"
+            />
+          </div>
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-amber-50 to-stone-100 flex items-center justify-center">
             <ImageOff size={40} className="text-amber-200" />
