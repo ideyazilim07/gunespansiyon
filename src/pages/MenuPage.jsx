@@ -98,14 +98,14 @@ export default function MenuPage() {
       )}
 
       {/* Product List */}
-      <main className="max-w-lg mx-auto px-4 py-4 pb-10">
+      <main className="max-w-lg mx-auto px-3 py-4 pb-10">
         {filtered.length === 0 ? (
           <div className="text-center py-20 text-gray-400">
             <UtensilsCrossed size={44} className="mx-auto mb-4 opacity-20" />
             <p className="text-base font-medium">{searchQuery ? t('noResults') : t('noProducts')}</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-3">
             {filtered.map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
