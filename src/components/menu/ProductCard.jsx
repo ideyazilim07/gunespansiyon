@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
     <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="flex">
         {/* Görsel */}
-        <div className="relative flex-shrink-0 w-28 h-28">
+        <div className="relative flex-shrink-0 w-40 h-40">
           {product.image_url ? (
             <img
               src={product.image_url}
@@ -20,13 +20,13 @@ export default function ProductCard({ product }) {
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-amber-50 to-stone-100 flex items-center justify-center">
-              <ImageOff size={24} className="text-amber-200" />
+              <ImageOff size={32} className="text-amber-200" />
             </div>
           )}
 
           {product.is_featured && (
-            <div className="absolute top-1.5 left-1.5 bg-amber-500 rounded-full w-5 h-5 flex items-center justify-center shadow">
-              <Star size={10} className="text-white fill-white" />
+            <div className="absolute top-2 left-2 bg-amber-500 rounded-full w-6 h-6 flex items-center justify-center shadow">
+              <Star size={12} className="text-white fill-white" />
             </div>
           )}
 
@@ -40,10 +40,10 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* İçerik */}
-        <div className="flex-1 p-3 flex flex-col justify-between min-w-0">
+        <div className="flex-1 p-4 flex flex-col justify-between min-w-0">
           <div>
-            <div className="flex items-start justify-between gap-1">
-              <h3 className="font-semibold text-gray-900 text-[15px] leading-snug">{name}</h3>
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="font-semibold text-gray-900 text-base leading-snug">{name}</h3>
               {product.is_featured && (
                 <span className="flex-shrink-0 text-[10px] text-amber-600 font-semibold bg-amber-50 px-1.5 py-0.5 rounded-full border border-amber-200">
                   {t('featured')}
@@ -51,13 +51,13 @@ export default function ProductCard({ product }) {
               )}
             </div>
             {desc && (
-              <p className="text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">{desc}</p>
+              <p className="text-gray-400 text-xs mt-1.5 line-clamp-3 leading-relaxed">{desc}</p>
             )}
           </div>
-          <div className="mt-2">
-            <span className="text-amber-600 font-bold text-xl">
+          <div className="mt-3">
+            <span className="text-amber-600 font-bold text-2xl">
               {Number(product.price).toLocaleString('tr-TR')}
-              <span className="text-sm font-medium ml-0.5">{product.currency || 'TL'}</span>
+              <span className="text-sm font-medium ml-1">{product.currency || 'TL'}</span>
             </span>
           </div>
         </div>
